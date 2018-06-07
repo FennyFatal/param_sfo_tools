@@ -28,11 +28,16 @@ def get_sfo_from_pkg(url)
   if (url.include? 'http')
   then
     f = StringIO.new
-    body = HTTP.get(url).body
-    while((tmp = body.readpartial) != nil && f.length <= 1024*1024*10)
-      f << tmp
+    tries = 0;
+    while (f.length == 0 && tries < 5)
+      tries += 1;
+      body = HTTP.get(url).body
+      while((tmp = body.readpartial) != nil && f.length <= 1024*1024*10)
+        f << tmp
+      end
     end
     f.seek(0)
+    puts f.length
     read_data(f)
   else
     open(url, 'r') do |f|
