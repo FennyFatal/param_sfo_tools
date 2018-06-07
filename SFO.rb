@@ -20,6 +20,8 @@ class SFO
       disp_as_hex data
     when :DEV_FLAG
       disp_as_hex data
+    when :PUBTOOLMINVER
+      disp_as_hex data
     when :ATTRIBUTE
       Attribute.read(data.to_binary_s.reverse)
     when :ATTRIBUTE2
@@ -30,7 +32,7 @@ class SFO
   end
 
   def self.disp_as_hex(item)
-    item.to_binary_s.reverse.unpack('H*')
+    item.to_binary_s.reverse.unpack('H*')[0]
   end
   
   class Attribute < BinData::Record
