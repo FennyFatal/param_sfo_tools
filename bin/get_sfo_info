@@ -1,9 +1,8 @@
 #!/usr/bin/env ruby
-load "SFO.rb"
-#require "bindata"
+require "SFO"
 require "http"
 
-def read_data(f)
+def self.read_data(f)
   #puts "Open"
   count = 0
   while record = f.read(1024)
@@ -23,7 +22,7 @@ def read_data(f)
   #puts 'Nothing found'
 end
 
-def get_sfo_from_pkg(url)
+def self.get_sfo_from_pkg(url)
   #puts "Requesting #{url}"
   if (url.include? 'http')
   then
@@ -45,7 +44,12 @@ def get_sfo_from_pkg(url)
   end
 end
 
-sfo = get_sfo_from_pkg ARGV[0]
-sfo.each_pair do |key,value|
-  puts "#{key}: #{value}"
+if (ARGV[0] == nil)
+then
+  puts 'Usage: get_sfo_info [URL|File]'
+else
+  sfo = self.get_sfo_from_pkg ARGV[0]
+  sfo.each_pair do |key,value|
+    puts "#{key}: #{value}"
+  end
 end
