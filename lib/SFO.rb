@@ -133,7 +133,7 @@ class SFO
 
   #Takes a stream as an argument
   def self.parse_sfo(stream)
-    sfo = read(stream)
+    sfo = SFO.read(stream)
     unless sfo.header.magic == 1179865088
       return nil
     end

@@ -3,7 +3,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'bindata', '~> 2.4', '>=2.4.3'
   s.add_runtime_dependency 'http', '~> 3.3', '>=3.3.0'
   s.executables << 'get_sfo_info'
-  s.version     = '0.0.1'
+  s.version     = '0.0.2'
   s.date        = '2018-06-07'
   s.summary     = "Param.sfo"
   s.description = "A simple parser utility for param.sfo"
