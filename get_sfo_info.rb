@@ -32,12 +32,11 @@ def get_sfo_from_pkg(url)
     while (f.length == 0 && tries < 5)
       tries += 1;
       body = HTTP.get(url).body
-      while((tmp = body.readpartial) != nil && f.length <= 1024*1024*10)
+      while((tmp = body.readpartial) != nil && f.length <= 1024*1024*3)
         f << tmp
       end
     end
     f.seek(0)
-    puts f.length
     read_data(f)
   else
     open(url, 'r') do |f|
