@@ -3,9 +3,16 @@ Tools to inspect param.sfo from PS4
 
 The SFO class will take a filestream and give a hash containing fields from param.sfo.
 
-An example has been created (Usage):
+# installation
 
-ruby get_sfo_info.rb [URL|File]
+`gem install param_sfo`
+
+# build
+
+You can build this gem yourself by running `gem build param_sfo.gemspec` then install with `gem install param_sfo-0.0.2.gem`
+
+# usage
+get_sfo_info [URL|File]
 
 E.G.
 
