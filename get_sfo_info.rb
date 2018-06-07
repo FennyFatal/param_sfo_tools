@@ -29,7 +29,7 @@ def get_sfo_from_pkg(url)
   then
     f = StringIO.new
     body = HTTP.get(url).body
-    while((tmp = body.readpartial) != nil && f.length <= 1024*1024*2)
+    while((tmp = body.readpartial) != nil && f.length <= 1024*1024*10)
       f << tmp
     end
     f.seek(0)
@@ -42,5 +42,6 @@ def get_sfo_from_pkg(url)
 end
 
 sfo = get_sfo_from_pkg ARGV[0]
-puts "Title ID #{sfo[:TITLE_ID].to_binary_s}"
-puts "PS4 System Version #{sfo[:SYSTEM_VER].to_binary_s.reverse.unpack('H*')}"
+sfo.each_pair do |key,value|
+  puts "#{key}: #{value}"
+end
